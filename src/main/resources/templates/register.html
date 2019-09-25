@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>注册</title>
+	<link rel="stylesheet" href="/css/login.css" type="text/css">
+	<script src="/js/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+	<div class="login-page">
+	  <div class="form">
+	      <input type="text" placeholder="请输入用户名" name="username" required="required"/>
+		  <input type="password" placeholder="请输入密码" name="password" required="required"/>
+		  <input type="password" placeholder="请再次输入密码" name="secondPassword" required="required"/>
+
+		  <button onclick="register()">登录</button>
+	  </div>
+	</div>
+</body>
+<script>
+    function register() {
+    	var username = $("input[name='username']").val();
+		var password = $("input[name='password']").val();
+		var secondPassword = $("input[name='secondPassword']").val();
+
+		$.ajax({
+            type: "post",
+            url: "/register",
+            data: {"username": username,"password": password,"secondPassword": secondPassword},
+            dataType: "json",
+            success: function (r) {
+                if (r.code == 0) {
+                    location.href =  '/login';
+                } else {
+					alert(r.msg);
+                }
+            }
+        });
+    }
+</script>
+</html>

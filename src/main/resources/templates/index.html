@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>首页</title>
+</head>
+<style>
+	div {
+		border: 1px dashed #ddd;
+		padding: 10px;
+		margin: 10px 10px 10px 0px;
+	}
+</style>
+<body>
+<h3>权限测试链接</h3>
+<div>
+	<@shiro.hasPermission name="user/user">
+		<a href="/user/list">获取用户信息</a>
+	</@shiro.hasPermission>
+	<@shiro.hasPermission name="user/add">
+		<a href="/user/add">新增用户</a>
+	</@shiro.hasPermission>
+	<@shiro.hasPermission name="user/delete">
+		<a href="/user/delete">删除用户</a>
+	</@shiro.hasPermission>
+</div>
+<a  href="/logout">注销</a>
+</body>
+</html>
