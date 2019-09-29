@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <@h.commonHead title="首页"/>
+    <@h.cssAndJs/>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <@h.navbartop/>
+    <@h.navbarleft/>
+    <div class="layui-body" style="padding-top: 20px;">
+        <!-- 内容主体区域 -->
+        <form class="layui-form"   method="post" accept-charset="UTF-8">
+            <div class="layui-form-item" style="width: 80%;">
+                <label class="layui-form-label">标题</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" placeholder="title" name="title" required="required"/>
+                </div>
+            </div>
+            <div class="layui-form-item" style="width: 80%">
+                <label class="layui-form-label">内容</label>
+                <div class="layui-input-block">
+                    <textarea  id="edit" name="content" class="layui-textarea"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn"   id="submit">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+    <@h.footer/>
+
+</div>
+
+<script>
+    var listUrl = "/plan/list";
+    //JavaScript代码区域
+    layui.use(['element','layer','layedit','form'], function(){
+        var element = layui.element, layer = layui.layer,layedit=layui.layedit;
+        layedit.build('edit'); //建立编辑器
+        var form = layui.form;
+        // form.on('submit(formDemo)',function () {
+        //     common.commonSaveForm('submitForm',listUrl,'')
+        // });
+
+    });
+
+    $('#submit').click(function(){
+        var data = $("form").serialize(); // 表单序列化
+        $.ajax( {
+            type : 'POST',
+            url : '/plan/list',
+            data : data,
+            success : function(msg) {
+                alert(msg);
+            }
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <@h.commonHead title="首页"/>
+    <@h.cssAndJs/>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+
+    <@h.navbartop/>
+    <@h.navbarleft/>
+
+
+    <div class="layui-body" style="padding: 30px">
+        <a href="/plan/insert" class="layui-layout-right" style="padding-top: 20px;padding-right: 20px;"><button class="layui-btn layui-btn-normal">新增计划</button></a>
+        <ul class="layui-timeline">
+            <#list planList as plan>
+            <li class="layui-timeline-item">
+                <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                <div class="layui-timeline-content layui-text">
+                    <h2><b>${plan.title}</b></h2>
+                    <h6 class="layui-timeline-title"><i>${((plan.createTime)?string('yyyy-MM-dd HH:mm:ss'))!''}</i></h6>
+                    <p> ${plan.content}
+                    </p>
+                </div>
+            </li>
+            </#list>
+        </ul>
+
+
+    </div>
+    <@h.footer/>
+
+</div>
+
+<script>
+    var listUrl = "/plan/list"
+    //JavaScript代码区域
+    layui.use(['element','layer','layedit','form'], function(){
+        var element = layui.element, layer = layui.layer,layedit=layui.layedit;
+        layedit.build('edit'); //建立编辑器
+        var form = layui.form;
+        form.on('submit(formDemo)',function () {
+            common.commonSaveForm('submitForm',listUrl,'')
+        });
+
+    });
+</script>
+</body>
+</html>

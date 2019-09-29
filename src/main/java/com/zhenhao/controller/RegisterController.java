@@ -19,7 +19,7 @@ public class RegisterController {
 
     @RequestMapping("/register")
     public String register(){
-        return "register";
+        return "/register";
     }
 
     @PostMapping("/register")

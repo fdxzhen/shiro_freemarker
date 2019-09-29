@@ -1,29 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>首页</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<@h.commonHead title="首页"/>
+	<@h.cssAndJs/>
 </head>
-<style>
-	div {
-		border: 1px dashed #ddd;
-		padding: 10px;
-		margin: 10px 10px 10px 0px;
-	}
-</style>
-<body>
-<h3>权限测试链接</h3>
-<div>
-	<@shiro.hasPermission name="user/user">
-		<a href="/user/list">获取用户信息</a>
-	</@shiro.hasPermission>
-	<@shiro.hasPermission name="user/add">
-		<a href="/user/add">新增用户</a>
-	</@shiro.hasPermission>
-	<@shiro.hasPermission name="user/delete">
-		<a href="/user/delete">删除用户</a>
-	</@shiro.hasPermission>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+	<@h.navbartop/>
+
+	<@h.navbarleft/>
+
+	<@h.footer/>
+
 </div>
-<a  href="/logout">注销</a>
+<script>
+	//JavaScript代码区域
+	layui.use(['element','layer'], function(){
+		var element = layui.element, layer = layui.layer;
+	});
+</script>
 </body>
 </html>

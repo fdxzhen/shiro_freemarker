@@ -12,6 +12,15 @@ public class User implements Serializable {
     private String password;
     private Date createTime;
     private String status;
+    private String imgUrl;
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
 
     public Integer getId() {
         return id;

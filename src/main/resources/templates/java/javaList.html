@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <@h.commonHead title="首页"/>
+    <link href="/static/layui/css/layui.css">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <@h.navbartop/>
+    <@h.navbarleft/>
+<div id="test1"></div>
+    <@h.footer/>
+</div>
+<script src="/static/js/jquery-3.4.1.js"></script>
+<script src="/static/layui/layui.js"></script>
+<script>
+    layui.use('tree', function(){
+        var tree = layui.tree;
+
+        //渲染
+        var inst1 = tree.render({
+            elem: '#test1'  //绑定元素
+            ,data: [{
+                title: '江西' //一级菜单
+                ,children: [{
+                    title: '南昌' //二级菜单
+                    ,children: [{
+                        title: '高新区' //三级菜单
+                        //…… //以此类推，可无限层级
+                    }]
+                }]
+            },{
+                title: '陕西' //一级菜单
+                ,children: [{
+                    title: '西安' //二级菜单
+                }]
+            }]
+        });
+    });
+</script>
+</body>
+</html>
